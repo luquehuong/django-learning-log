@@ -17,28 +17,10 @@ BOOTSTRAP3 = {
     'include_jquery': True,
     }
 
-# Heroku settings
-if os.getcwd() == '/app':
-    import dj_database_url
-    DATABASES = {
-    'default': dj_database_url.config(default='postgres://localhost')
-    }
-
-    # Honor the 'X-Forwarded-Proto' header for request.is_secure().
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-    # Allow all host headers.
-    ALLOWED_HOSTS = ['*']
-
-    # Static asset configuration
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-    STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-    )
 
 import os
 from settings import PROJECT_ROOT
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -151,6 +133,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+# Heroku settings
+if os.getcwd() == '/app':
+    import dj_database_url
+    DATABASES = {
+    'default': dj_database_url.config(default='postgres://localhost')
+    }
+
+    # Honor the 'X-Forwarded-Proto' header for request.is_secure().
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+    # Allow all host headers.
+    ALLOWED_HOSTS = ['*']
+
+    # Static asset configuration
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'static'),
+    )
