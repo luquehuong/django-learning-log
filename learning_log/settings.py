@@ -153,6 +153,10 @@ if os.getcwd() == '/app':
   # Honor the 'X-Forwarded-Proto' header for request.is_secure().
   SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+  # Allow only Heroku to host the project.
+  ALLOWED_HOSTS = ['learning-log.herokuapp.com']
+  DEBUG = False
+
   # Allow all host headers.
   ALLOWED_HOSTS = ['*']
 
